@@ -1,0 +1,310 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandakini</title>
+    <link rel="stylesheet" href="{% static 'blog/main.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+                
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar, .header, .footer {
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar {
+            background: linear-gradient(to right, #ff6f61, #d64d6b);
+            padding: 0.5rem 1rem; /* Normal padding */
+            height: 56px; /* Standard navbar height */
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        .navbar-brand img {
+            height: 40px; /* Adjust logo height */
+            margin-right: 10px; /* Spacing between logo and text */
+        }
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-weight: 500;
+            font-size: 1rem; /* Normal font size */
+        }
+        .navbar-nav .nav-link:hover, .navbar-nav .nav-link.active {
+            color: #ffd1d1;
+        }
+        .navbar-nav .nav-link i {
+            font-size: 1.2rem; /* Slightly larger icons */
+        }
+        .navbar-nav.ms-auto {
+            margin-left: auto; /* Aligns items to the right */
+        }
+        .header {
+            background: linear-gradient(to right, #ff6f61, #d64d6b);
+            color: white;
+            padding: 1rem 0; /* Normal padding */
+            text-align: center;
+        }
+        .sidebar {
+            background: #f9f9f9;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .sidebar h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .sidebar .list-group-item {
+            border: none;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        .sidebar .list-group-item-light {
+            background-color: #f4f4f4;
+        }
+        .sidebar .list-group-item a {
+            text-decoration: none;
+            color: #333;
+        }
+        .sidebar .list-group-item a:hover {
+            color: #ff6f61;
+        }
+        .post-block {
+            background: linear-gradient(to bottom, #ffffff, #f9f9f9);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            padding: 20px;
+        }
+        .post-block img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .post-block h3 {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .post-block p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+        .content-section {
+            background: linear-gradient(to bottom, #ffffff, #f4f4f4);
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .content-section h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .list-group-item {
+            border: none;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+        .list-group-item-light {
+            background-color: #f4f4f4;
+        }
+        .footer {
+            background: linear-gradient(to right, #ff6f61, #d64d6b);
+            color: white;
+            text-align: center;
+            padding: 0.5rem 0; /* Normal padding */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .profile-list img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .profile-list a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+        }
+        .profile-list a:hover {
+            color: #ff6f61;
+        }
+        .post-form {
+            background: linear-gradient(to right, #ff6f61, #d64d6b);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        .post-form textarea {
+            border: none;
+            border-radius: 15px;
+            background: #fff;
+            color: #333;
+        }
+        .post-form button {
+            background: #fff;
+            color: #ff6f61;
+            border: none;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+        .post-form button:hover {
+            background: #ff6f61;
+            color: #fff;
+        }
+    </style>
+
+
+
+    <style>
+        .post-card {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+    
+        .post-card:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+    
+        .post-card img {
+            width: 50px; /* Adjust size as needed */
+            height: 50px; /* Adjust size as needed */
+            object-fit: cover;
+            border: 2px solid #e55967;
+        }
+    
+        .post-card h5 {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0;
+        }
+    
+        .post-card p {
+            font-size: 1rem;
+            color: #666;
+            margin: 0;
+        }
+    
+        .btn-light {
+            background-color: #f8f9fa;
+            border-color: #ddd;
+            color: #333;
+        }
+    
+        .btn-light:hover {
+            background-color: #e2e6ea;
+            border-color: #ddd;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-md navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    
+                    <h1>Mandakini</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarToggle">
+                    <div class="navbar-nav ms-auto">
+                        {% if user.is_authenticated %}
+                        <a class="nav-item nav-link" href="{% url 'post-create' %}"><i class="bi bi-pencil"></i> Create</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                        <a class="nav-item nav-link" href="{% url 'profile' %}"><i class="bi bi-person"></i> Profile</a>
+                        <a class="nav-item nav-link" href="#" title="Messages"><i class="bi bi-envelope"></i></a>
+                        <a class="nav-item nav-link" href="#" title="Notifications"><i class="bi bi-bell"></i></a>
+                        {% else %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}"><i class="bi bi-lock"></i> Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}"><i class="bi bi-person-plus"></i> Register</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main role="main" class="container mt-5 pt-4">
+        <div class="row">
+            <div class="col-md-8">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% block content %}
+                <!-- Post content will be injected here -->
+                {% endblock %}
+            </div>
+            <div class="col-md-4">
+                <div class="container mt-4">
+                    <h1 class="mb-4 text-center">Trending in Nepal 🔥</h1>
+                    <div class="list-group">
+                        {% for post in posts %}
+                            <a href="{% url 'post-detail' post.id %}" class="list-group-item list-group-item-action">
+                                <h3 class="mb-1">{{ post.title }}</h3>
+                                <small class="text-muted">{{ post.date_posted | date:'F d, Y' }}</small>
+                            </a>
+                        {% empty %}
+                            <div class="alert alert-info">
+                                No posts available.
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+               
+                
+                
+                
+                
+                
+                
+                </div>
+                
+                <!-- Sidebar or additional content can go here if needed -->
+                
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <p class="mb-0">© 2024 Mandakini. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9pAqH6I8QwF0V+2K4h3g0F4J5UUJ0FqEjUkJ6rGf0b7x8A1JScP" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-GLhlTQ6FqC1/7nR4MVDYYT0cT82lT3s4L5WbZbJoI4F7zjO7ZZbMd/7ktP1qfu9d" crossorigin="anonymous"></script>
+</body>
+</html>
+

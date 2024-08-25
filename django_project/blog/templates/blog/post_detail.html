@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <article class="media content-section">
+        <!-- Author's Profile Image -->
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" alt="Author Image" style="width: 80px; height: 80px; object-fit: cover;">
+
+        <div class="media-body">
+            <!-- Article Metadata -->
+            <div class="article-metadata mb-3">
+                <a class="text-primary font-weight-bold mr-2" href="#">@{{ object.author.username }}</a>
+                <small class="text-muted">{{ object.date_posted | date:'F d, Y' }}</small>
+                {% if object.author == user %}
+                <!-- Update and Delete Buttons -->
+                <div class="mt-2">
+                    <a class="btn btn-outline-primary btn-sm mr-2" href="{% url 'post-update' object.id %}">Update</a>
+                    <a class="btn btn-outline-danger btn-sm" href="{% url 'post-delete' object.id %}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Article Title -->
+            <h2 class="article-title font-weight-bold mb-3">{{ object.title }}</h2>
+
+            <!-- Article Content -->
+            <p class="article-content mb-4">{{ object.content }}</p>
+        </div>
+
+        <div class="d-flex justify-content-start mb-3">
+            <button class="btn btn-outline-danger me-2 btn-love" onclick="toggleLove(this)">
+                <i class="fas fa-heart"></i> <span class="ms-1">Love</span>
+            </button>
+            <button class="btn btn-outline-success me-2">
+                <i class="fas fa-retweet"></i> <span class="ms-1">Retweet</span>
+            </button>
+            <button class="btn btn-outline-info">
+                <i class="fas fa-share-alt"></i> <span class="ms-1">Share</span>
+            </button>
+        </div>
+    </article>
+
+    <style>
+        .article-img {
+            border: 2px solid #e55967;
+        }
+
+        .article-title {
+            color: #e55967;
+        }
+
+        .article-content {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .btn-love {
+            position: relative;
+        }
+
+        .btn-love.active .fas.fa-heart {
+            color: #e55967;
+        }
+    </style>
+
+{% endblock %}

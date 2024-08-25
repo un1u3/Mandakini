@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="content-section p-4 rounded-3 shadow-3d bg-light hover-3d">
+                    <h1 class="mb-4 text-primary animated fadeIn">About Us</h1>
+                    <p class="lead animated fadeIn">Welcome to Creative Blog! We are dedicated to bringing you the latest insights, stories, and updates on a variety of topics. Our mission is to engage and inform our readers with high-quality content.</p>
+                    <h2 class="mt-4 text-secondary animated fadeIn">Our Story</h2>
+                    <p class="animated fadeIn">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum. Curabitur suscipit nisl at eros lacinia, eget malesuada erat convallis. Sed condimentum euismod orci, nec fermentum erat vulputate et. Integer et dolor eu libero auctor scelerisque. Morbi ut urna nec arcu faucibus fermentum.</p>
+                    <h2 class="mt-4 text-secondary animated fadeIn">Our Team</h2>
+                    <p class="animated fadeIn">Nulla facilisi. Curabitur dictum, erat ac ullamcorper ullamcorper, lorem erat iaculis ex, eget lacinia orci velit non lorem. Praesent vestibulum malesuada felis, in consectetur elit. Aenean efficitur sem ac ipsum consectetur, nec lacinia nisi suscipit.</p>
+                    <h2 class="mt-4 text-secondary animated fadeIn">Contact Us</h2>
+                    <p class="animated fadeIn">If you have any questions or feedback, feel free to reach out to us through our contact page or email us at contact@creativeblog.com. We would love to hear from you!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+<style>
+    .shadow-3d {
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+        transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .shadow-3d::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.1);
+        transform: scaleX(1.1) scaleY(1.1);
+        z-index: -1;
+        transition: background 0.3s ease;
+    }
+
+    .hover-3d:hover {
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        transform: perspective(1000px) rotateX(5deg) rotateY(5deg);
+    }
+
+    .animated {
+        animation-duration: 1s;
+        animation-fill-mode: both;
+    }
+
+    .fadeIn {
+        animation-name: fadeIn;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
